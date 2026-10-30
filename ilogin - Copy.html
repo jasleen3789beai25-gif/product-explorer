@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DashCore — Login / Sign Up</title>
+  <link rel="stylesheet" href="ilogin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Floating background blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <!-- ═══════════════════════════════════
+       LOGIN CARD
+  ════════════════════════════════════ -->
+  <div class="card" id="loginCard">
+
+    <div class="logo">
+      <span class="logo-c">C</span>
+      <span class="logo-dash">DASHCORE</span>
+    </div>
+    <p class="subtitle">Welcome back! Please login to continue.</p>
+
+    <div class="alert" id="loginAlert"></div>
+
+    <div class="form-group">
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email"/>
+      <span class="field-error" id="loginEmailErr"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="loginPass">Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"/>
+        <button class="toggle-pw" id="toggleLoginPw" type="button" aria-label="Toggle password">
+          <svg id="loginEyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <span class="field-error" id="loginPassErr"></span>
+    </div>
+
+    <div class="forgot-row">
+      <a href="#" class="forgot-link" id="forgotLink">Forgot password?</a>
+    </div>
+
+    <button class="btn-login" id="loginBtn" type="button">
+      <span id="loginBtnText">Login</span>
+      <span class="spinner" id="loginSpinner"></span>
+    </button>
+
+    <p class="signup-row">
+      Don't have an account?
+      <a href="#" class="signup-link" id="goToSignup">Sign Up</a>
+    </p>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SIGN UP CARD
+  ════════════════════════════════════ -->
+  <div class="card hidden" id="signupCard">
+
+    <div class="logo">
+      <span class="logo-c">C</span>
+      <span class="logo-dash">DASHCORE</span>
+    </div>
+    <p class="subtitle">Create your account to get started.</p>
+
+    <div class="alert" id="signupAlert"></div>
+
+    <div class="form-group">
+      <label for="signupName">Full Name</label>
+      <input type="text" id="signupName" placeholder="Arjun Kapoor" autocomplete="name"/>
+      <span class="field-error" id="signupNameErr"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="signupEmail">Email</label>
+      <input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email"/>
+      <span class="field-error" id="signupEmailErr"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="signupPass">Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="signupPass" placeholder="Min. 6 characters" autocomplete="new-password"/>
+        <button class="toggle-pw" id="toggleSignupPw" type="button" aria-label="Toggle password">
+          <svg id="signupEyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <span class="field-error" id="signupPassErr"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="signupConfirm">Confirm Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="signupConfirm" placeholder="Re-enter password" autocomplete="new-password"/>
+        <button class="toggle-pw" id="toggleConfirmPw" type="button" aria-label="Toggle password">
+          <svg id="confirmEyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <span class="field-error" id="signupConfirmErr"></span>
+    </div>
+
+    <button class="btn-login" id="signupBtn" type="button">
+      <span id="signupBtnText">Create Account</span>
+      <span class="spinner" id="signupSpinner"></span>
+    </button>
+
+    <p class="signup-row">
+      Already have an account?
+      <a href="#" class="signup-link" id="goToLogin">Login</a>
+    </p>
+  </div>
+
+  <script src="ilogin.js"></script>
+</body>
+</html>

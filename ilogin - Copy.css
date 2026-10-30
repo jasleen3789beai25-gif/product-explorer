@@ -1,0 +1,183 @@
+/* ===== CSS Variables ===== */
+:root {
+  --bg: #eef0f8;
+  --card-bg: #ffffff;
+  --card-shadow: 0 20px 60px rgba(80, 80, 180, 0.12), 0 4px 20px rgba(0,0,0,0.06);
+  --input-bg: #f1f2f9;
+  --input-focus: #6d6af0;
+  --label-color: #2d2d4e;
+  --placeholder-color: #9fa3c0;
+  --text-muted: #6b6f8d;
+  --btn-from: #5a56f0;
+  --btn-to: #3b38d4;
+  --btn-shadow: 0 8px 24px rgba(90, 86, 240, 0.45);
+  --btn-hover-shadow: 0 12px 32px rgba(90, 86, 240, 0.6);
+  --logo-c: #2d2d4e;
+  --logo-dash-from: #e96cb0;
+  --logo-dash-to: #7c6af5;
+  --error-color: #e05c7a;
+  --success-color: #3dba8c;
+  --alert-error-bg: #fde8ed;
+  --alert-success-bg: #e6faf4;
+  --radius-card: 24px;
+  --radius-input: 14px;
+  --radius-btn: 14px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font: 'Poppins', sans-serif;
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== Body ===== */
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ===== Background blobs ===== */
+.bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: drift 10s ease-in-out infinite alternate;
+}
+.blob-1 { width:420px;height:420px;background:radial-gradient(circle,#c8c5ff,#a5a0f5);top:-100px;left:-100px; }
+.blob-2 { width:380px;height:380px;background:radial-gradient(circle,#fbb6d8,#f97bc0);bottom:-80px;right:-80px;animation-delay:-5s; }
+@keyframes drift {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(30px,20px) scale(1.05); }
+}
+
+/* ===== Card ===== */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  padding: 48px 44px 40px;
+  width: 100%;
+  max-width: 480px;
+  position: absolute;
+  z-index: 10;
+  animation: cardIn 0.55s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.card.hidden {
+  display: none;
+}
+@keyframes cardIn {
+  from { opacity:0; transform:translateY(28px) scale(0.96); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+/* ===== Logo ===== */
+.logo { display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px; }
+.logo-c { font-size:2rem;font-weight:700;color:var(--logo-c);letter-spacing:-1px; }
+.logo-dash {
+  font-size:1.85rem;font-weight:700;letter-spacing:3px;
+  background:linear-gradient(135deg,var(--logo-dash-from),var(--logo-dash-to));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ===== Subtitle ===== */
+.subtitle { text-align:center;font-size:0.88rem;color:var(--text-muted);margin-bottom:24px; }
+
+/* ===== Alert ===== */
+.alert {
+  display:none;padding:11px 16px;border-radius:10px;
+  font-size:0.83rem;font-weight:500;margin-bottom:16px;
+  animation:fadeSlideIn 0.3s ease;
+}
+.alert.error   { display:block;background:var(--alert-error-bg);color:var(--error-color); }
+.alert.success { display:block;background:var(--alert-success-bg);color:var(--success-color); }
+@keyframes fadeSlideIn {
+  from { opacity:0;transform:translateY(-6px); }
+  to   { opacity:1;transform:translateY(0); }
+}
+
+/* ===== Form Groups ===== */
+.form-group { margin-bottom:16px; }
+label { display:block;font-size:0.88rem;font-weight:600;color:var(--label-color);margin-bottom:7px; }
+input {
+  width:100%;background:var(--input-bg);border:2px solid transparent;
+  border-radius:var(--radius-input);padding:13px 18px;
+  font-family:var(--font);font-size:0.92rem;color:var(--label-color);outline:none;
+  transition:border-color var(--transition),box-shadow var(--transition),background var(--transition);
+}
+input::placeholder { color:var(--placeholder-color); }
+input:focus { border-color:var(--input-focus);background:#fff;box-shadow:0 0 0 4px rgba(109,106,240,0.12); }
+input.is-error { border-color:var(--error-color);box-shadow:0 0 0 4px rgba(224,92,122,0.12); }
+
+/* ===== Password wrapper ===== */
+.password-wrapper { position:relative; }
+.password-wrapper input { padding-right:50px; }
+.toggle-pw {
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  background:none;border:none;cursor:pointer;color:var(--placeholder-color);
+  display:flex;align-items:center;transition:color var(--transition);
+}
+.toggle-pw:hover { color:var(--input-focus); }
+
+/* ===== Field errors ===== */
+.field-error { display:block;font-size:0.76rem;color:var(--error-color);margin-top:5px;min-height:16px; }
+
+/* ===== Forgot row ===== */
+.forgot-row { display:flex;justify-content:flex-end;margin-bottom:20px;margin-top:-4px; }
+.forgot-link { font-size:0.8rem;font-weight:500;color:var(--input-focus);text-decoration:none;transition:opacity var(--transition); }
+.forgot-link:hover { opacity:0.7; }
+
+/* ===== Login / Signup Button ===== */
+.btn-login {
+  width:100%;padding:15px;
+  background:linear-gradient(135deg,var(--btn-from),var(--btn-to));
+  color:#fff;font-family:var(--font);font-size:1rem;font-weight:600;
+  border:none;border-radius:var(--radius-btn);cursor:pointer;
+  box-shadow:var(--btn-shadow);
+  transition:transform var(--transition),box-shadow var(--transition),opacity var(--transition);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  letter-spacing:0.5px;position:relative;overflow:hidden;
+}
+.btn-login::after {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent);
+  opacity:0;transition:opacity var(--transition);
+}
+.btn-login:hover { transform:translateY(-2px);box-shadow:var(--btn-hover-shadow); }
+.btn-login:hover::after { opacity:1; }
+.btn-login:active { transform:translateY(0);box-shadow:var(--btn-shadow); }
+.btn-login:disabled { opacity:0.72;cursor:not-allowed;transform:none; }
+
+/* ===== Spinner ===== */
+.spinner {
+  display:none;width:18px;height:18px;
+  border:2.5px solid rgba(255,255,255,0.35);border-top-color:#fff;
+  border-radius:50%;animation:spin 0.75s linear infinite;
+}
+.spinner.active { display:inline-block; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* ===== Sign-up row ===== */
+.signup-row { text-align:center;font-size:0.85rem;color:var(--text-muted);margin-top:18px; }
+.signup-link { font-weight:600;color:var(--input-focus);text-decoration:none;transition:opacity var(--transition); }
+.signup-link:hover { opacity:0.75; }
+
+/* ===== Responsive ===== */
+@media (max-width:520px) {
+  .card { padding:32px 20px 28px;margin:16px; }
+  .logo-dash { font-size:1.5rem; }
+}
+
+/* ===== Shake animation ===== */
+@keyframes shake {
+  10%,90%  { transform:translateX(-3px); }
+  20%,80%  { transform:translateX(5px); }
+  30%,50%,70% { transform:translateX(-6px); }
+  40%,60%  { transform:translateX(6px); }
+}
